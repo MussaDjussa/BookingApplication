@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.RegistrationPage"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content >
+        <Grid BackgroundColor="Black">
+            <BoxView Scale="5" AnchorY="0" AnchorX="1" Opacity="0.9">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#f542e0" Offset="0.13"/>
+                        <GradientStop Color="Blue" Offset="0.35"/>
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <yummy:PancakeView CornerRadius="30,30,0,0" Margin="0,60,0,0" BackgroundColor="White">
+                <Grid>
+            <Image Source="background.png" 
+                   Opacity="0.6"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   HeightRequest="1920"
+                   WidthRequest="1080"
+                   Aspect="AspectFill"
+                   />
+
+            <StackLayout>
+              
+                <Image Source="Registration.png"
+                       HeightRequest="230"
+                       WidthRequest="230"
+                       Opacity="0.9"
+                       Margin="0,20,0,0"/>
+                        <Frame Margin="30,0,30,20"
+                       CornerRadius="15"
+                       Opacity="0.70"
+                       BackgroundColor="#fbfafc"
+                       Padding="0"
+                       HeightRequest="80">
+
+                    <Label x:Name="Greeting"
+                       Text="Регистрация"
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       Opacity="0.7"
+                       FontSize="32"
+                       TextColor="#560f73"
+                       Padding="0"
+                       VerticalOptions="CenterAndExpand"/>
+                </Frame>
+
+                        <Frame Background="White" Margin="20,0,20,0" Opacity="0.8">
+                            <StackLayout Margin="0,0,0,0" Padding="0">
+                                <Entry Placeholder="Как Вас зовут?" Opacity="0.75" />
+                                <Entry Placeholder="Введите почту" Opacity="0.75" 
+                                       x:Name="UserNewEmail"/>
+                    <Entry IsPassword="True" Placeholder="Придумайте пароль" Opacity="0.75" 
+                           x:Name="UserNewPassword"/>
+                    <Button Text="Зарегистрироваться"
+                            TextColor="White"
+                            BackgroundColor="#fca93d"
+                            Margin="0,10,0,8"
+                            TextTransform="None"
+                            HeightRequest="40"
+                            Clicked="Button_Clicked_1"/>
+                    <Button BackgroundColor="Transparent"
+                            Text="Назад"
+                            TextTransform="None"
+                            BorderWidth="0"
+                            FontAttributes="None"
+                            TextColor="#3d54fc"
+                            FontSize="15"
+                            Clicked="Button_Clicked"
+                            Padding="0"/>
+                </StackLayout>
+                        </Frame>
+                    </StackLayout>
+            </Grid>
+            </yummy:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

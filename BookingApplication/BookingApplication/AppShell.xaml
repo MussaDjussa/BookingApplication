@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.AppShell"
+             
+             xmlns:local="clr-namespace:BookingApplication">
+
+    <!--маршруты-->
+    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
+    </ShellItem>
+
+    <ShellItem Route="MainPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+    </ShellItem>
+
+    <ShellItem Route="RegistrationPage" FlyoutItemIsVisible="True">
+        <ShellContent ContentTemplate="{DataTemplate local:RegistrationPage}" />
+    </ShellItem>
+
+    <!--вкладки-->
+    <FlyoutItem Title="Главная">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"
+                      FlyoutItemIsVisible="False"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Бронирование">
+        <ShellContent ContentTemplate="{DataTemplate local:BookingPage}" Route="BookingPage"/>
+    </FlyoutItem>
+</Shell>
