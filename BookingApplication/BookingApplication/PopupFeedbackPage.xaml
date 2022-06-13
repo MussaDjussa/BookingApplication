@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prikol:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.PopupFeedbackPage"
+             xmlns:prikol="http://xamarin.com/schemas/2020/toolkit"
+             Size="380,500">
+
+    <StackLayout >
+        <Frame>
+            <Label Text="Добавить отзыв"
+                   FontSize="Body"
+                   TextColor="#3d54fc"/>
+        </Frame>
+        <TableView x:Name="Prikolist">
+            <TableRoot>
+                <TableSection Title="ФИО заявителя">
+                    <EntryCell Placeholder="Введите ФИО" x:Name="FIO"
+                               />
+                </TableSection>
+
+                <TableSection Title="Меры, принятые по заявлению администрации"
+                             >
+                    <EntryCell Placeholder="Опишите принятые меры" x:Name="Panishment"
+                              />
+                </TableSection>
+
+                <TableSection Title="Комментарий отзыва">
+                    <EntryCell Placeholder="Опишите подробно свой отзыв"
+                               Height="60"
+                               x:Name="Description"
+                               />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <StackLayout Orientation="Horizontal" Margin="8"
+                     HorizontalOptions="EndAndExpand">
+            <Button Text="Отмена"
+                    TextColor="#3d54fc"
+                    BackgroundColor="Transparent"
+                    BorderWidth="0"
+                    Clicked="Button_Clicked"/>
+
+            <Button Text="Сохранить"
+                    Margin="10,0,0,0"
+                    Clicked="Button_Clicked_1"/>
+        </StackLayout>
+    </StackLayout>
+</prikol:Popup>

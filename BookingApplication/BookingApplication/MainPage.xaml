@@ -2,29 +2,36 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingApplication.MainPage"
-             Shell.NavBarIsVisible="True">
+             Shell.NavBarIsVisible="True"
+             Title="Главная">
 
     <ContentPage.ToolbarItems >
         <ToolbarItem Text="Выйти" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    
-    
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
 
+
+    <ScrollView>
+
+        <StackLayout>
+            <Frame Padding="0"
+                   HeightRequest="120">
+                <Grid Background="#2196F3">
+                    <Image Source="maintitle" Aspect="AspectFill" Opacity="0.7"/>
+                    <Label Text="Добро пожаловать!"
+                           TextColor="White"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Title"
+                           FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+
+            <Label Text="Наши клубы находятся по адресу"  Padding="30,10,30,10"/>
+
+
+            <Label Text="Тарифы" HorizontalTextAlignment="Center" FontSize="Body" Padding="30,10,30,10"/>
+        </StackLayout>
+        
+
+    </ScrollView>
 </ContentPage>

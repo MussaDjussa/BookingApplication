@@ -18,6 +18,7 @@
         <ShellContent ContentTemplate="{DataTemplate local:RegistrationPage}" />
     </ShellItem>
 
+
     <!--вкладки-->
     <FlyoutItem Title="Главная">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"
@@ -26,5 +27,13 @@
 
     <FlyoutItem Title="Бронирование">
         <ShellContent ContentTemplate="{DataTemplate local:BookingPage}" Route="BookingPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Отзывы">
+        <ShellContent ContentTemplate="{DataTemplate local:FeedbackTabbedPage}" Route="FeedbackTabbedPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Доп.услуги">
+        <ShellContent ContentTemplate="{DataTemplate local:AdditionServiceTabbedPage}" Route="AdditionServiceTabbedPage"/>
     </FlyoutItem>
 </Shell>

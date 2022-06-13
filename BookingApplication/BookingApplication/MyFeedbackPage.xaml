@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.MyFeedbackPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <CollectionView x:Name="collection">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Margin="20">
+                                    <Label Text="{Binding FIO}"
+                                       FontAttributes="Bold"
+                                       FontSize="Medium"/>
+
+                                    <StackLayout>
+                                        <Label Text="Принятые меры:" 
+                                               FontAttributes="Bold"
+                                               Opacity="0.8"/>
+                                        <Label Text="{Binding FixedFromAdministration}" 
+                                       TextColor="#3d54fc"/>
+                                    </StackLayout>
+
+
+                                    <StackLayout>
+                                        <Label Text="Описание отзыва"
+                                               FontAttributes="Bold"
+                                               Opacity="0.8"/>
+                                        <Label Text="{Binding Description}" TextColor="Red"/>
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+
+                                <Label Text="{Binding DateTime}" Grid.Column="1"
+                                       HorizontalOptions="EndAndExpand"
+                                       Margin="0,20,20,0"/>
+                            </Grid>
+                            
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button Margin="20"
+                        Text="Добавить отзыв"
+                        Clicked="Button_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

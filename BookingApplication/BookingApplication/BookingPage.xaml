@@ -3,43 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingApplication.BookingPage"
              Visual="Material"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
-    <StackLayout Background="white">
-        <StackLayout Padding="15">
-            <Label Text="Отобразить по"
-                   FontAttributes="Bold"
-                   FontSize="Large"
-                   TextColor="Black"
-                   HorizontalOptions="CenterAndExpand"
-                   Opacity="0.7"/>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-                <Button Text="День"
-                        x:Name="Day"
-                        Clicked="Day_Clicked"/>
-                <Button Text="Неделя"
-                        x:Name="Week"
-                        Clicked="Week_Clicked"/>
-                <Button Text="Месяц"
-                        x:Name="Month"
-                        Clicked="Month_Clicked"/>
-            </StackLayout>
-        </StackLayout>
-        <syncfusion:SfSchedule x:Name="schedule" 
-                               ScheduleView="MonthView" 
-                               HeightRequest="800"
+    <StackLayout Background="white"
+                 >
+        <syncfusion:SfSchedule x:Name="Schedule"
+                                 ScheduleView="MonthView"
                                Locale="ru"
-                               CellDoubleTapped="schedule_CellDoubleTapped">
-            <syncfusion:SfSchedule.HeaderStyle>
-                <syncfusion:HeaderStyle
-			BackgroundColor="#EAEAEA" 
-			TextColor="Blue" 
-			FontFamily="Arial"/>
-            </syncfusion:SfSchedule.HeaderStyle>
+                               TimeZone="Russian Standard Time"
+                               VerticalOptions="FillAndExpand">
+
+
+            <syncfusion:SfSchedule.MonthViewSettings>
+                <syncfusion:MonthViewSettings ShowAgendaView="True">
+                    <syncfusion:MonthViewSettings.AgendaViewStyle>
+                        <syncfusion:AgendaViewStyle TimeFormat="HH:mm"/>
+                    </syncfusion:MonthViewSettings.AgendaViewStyle>
+                </syncfusion:MonthViewSettings>
+            </syncfusion:SfSchedule.MonthViewSettings>
 
         </syncfusion:SfSchedule>
-
 
     </StackLayout>
 

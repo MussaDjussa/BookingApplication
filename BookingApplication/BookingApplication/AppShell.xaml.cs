@@ -25,6 +25,12 @@ namespace BookingApplication
                 typeof(BookingPage));
             Routing.RegisterRoute(nameof(MainPage),
                 typeof(MainPage));
+            Routing.RegisterRoute(nameof(FeedbackTabbedPage),
+                typeof(FeedbackTabbedPage));
+            Routing.RegisterRoute(nameof(MyFeedbackPage),
+                typeof(MyFeedbackPage));
+            Routing.RegisterRoute(nameof(AdditionServiceTabbedPage),
+                typeof(AdditionServiceTabbedPage));
         }
     }
 }

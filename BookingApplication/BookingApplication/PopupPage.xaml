@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.PopupPage"
+              xmlns:syncfusionPickers="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms">
+    <StackLayout>
+        <Frame BackgroundColor="#7a15a3" Padding="0" >
+
+            <Label Text="Контекстное меню бронирования"
+                                   Margin="20"
+                                   FontAttributes="Bold"
+                                   FontSize="20"
+                                   TextColor="White"/>
+        </Frame>
+        <StackLayout Padding="20">
+
+
+
+
+
+            <StackLayout Margin="10" Orientation="Horizontal">
+
+                <inputLayout:SfTextInputLayout Hint="Имя" Padding="0" WidthRequest="200">
+                    <Entry MaxLength="22"
+                                     FontSize="18"
+                                     x:Name="Username"
+                                     Margin="10,0,0,0"
+                                     WidthRequest="100"
+                                     />
+                </inputLayout:SfTextInputLayout>
+            </StackLayout>
+
+
+            <syncfusionPickers:SfTimePicker x:Name="TimePickerStart"
+                                                         HeaderText="Начало время"
+                                                         HeaderFontSize="16"
+                                                         Format="HH_mm"
+                                                         />
+
+
+
+            <syncfusionPickers:SfTimePicker x:Name="TimePickerEnd"
+                                                         HeaderText="Конец времени"
+                                                         HeaderFontSize="16"
+                                                         Format="HH_mm"/>
+
+
+
+            <inputLayout:SfTextInputLayout Hint="Комментарий" Padding="0" WidthRequest="200">
+                <Entry MaxLength="22"
+                                     FontSize="18"
+                                     x:Name="Description"
+                                     Margin="10,0,0,0"
+                                     WidthRequest="100"
+                                     />
+            </inputLayout:SfTextInputLayout>
+
+        </StackLayout>
+    </StackLayout>
+
+</xct:Popup>

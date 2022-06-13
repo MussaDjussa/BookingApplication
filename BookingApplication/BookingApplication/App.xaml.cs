@@ -6,11 +6,15 @@ namespace BookingApplication
 {
     public partial class App : Application
     {
+        public static FeedbackViewModel viewModel = new FeedbackViewModel();
         public App()
         {
+
             InitializeComponent();
 
             MainPage = new AppShell();
+            //MainPage = new MainPage();
+            //MainPage = new BookingPage();
         }
 
         protected override void OnStart()
