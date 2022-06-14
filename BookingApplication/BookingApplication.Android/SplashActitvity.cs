@@ -30,7 +30,7 @@ namespace BookingApplication.Droid
 
         async Task SimulateStartup()
         {
-            await Task.Delay(TimeSpan.FromSeconds(9));
+            await Task.Delay(8000);
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
     }

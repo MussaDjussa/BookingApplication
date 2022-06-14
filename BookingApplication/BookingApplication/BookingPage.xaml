@@ -4,16 +4,26 @@
              x:Class="BookingApplication.BookingPage"
              Visual="Material"
              Shell.NavBarIsVisible="True"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
+             Title="Бронирование">
     <StackLayout Background="white"
                  >
         <syncfusion:SfSchedule x:Name="Schedule"
                                  ScheduleView="MonthView"
                                Locale="ru"
                                TimeZone="Russian Standard Time"
-                               VerticalOptions="FillAndExpand">
+                               VerticalOptions="FillAndExpand"
+                               CellDoubleTapped="schedule_CellDoubleTapped"
+                               >
 
-
+            <syncfusion:SfSchedule.AppointmentMapping>
+                <syncfusion:ScheduleAppointmentMapping
+			SubjectMapping="Subject" 
+			StartTimeMapping="StartTimeZone"
+			EndTimeMapping="EndTimeZone">
+                </syncfusion:ScheduleAppointmentMapping>
+                
+            </syncfusion:SfSchedule.AppointmentMapping>
             <syncfusion:SfSchedule.MonthViewSettings>
                 <syncfusion:MonthViewSettings ShowAgendaView="True">
                     <syncfusion:MonthViewSettings.AgendaViewStyle>
@@ -23,6 +33,8 @@
             </syncfusion:SfSchedule.MonthViewSettings>
 
         </syncfusion:SfSchedule>
+
+        <Button Clicked="Button_Clicked"/>
 
     </StackLayout>
 

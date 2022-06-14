@@ -1,4 +1,5 @@
-﻿using Firebase.Auth;
+﻿using BookingApplication.Helpers;
+using Firebase.Auth;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace BookingApplication
         public LoginPage()
         {
             InitializeComponent();
+            UserLoginEmail.Text = Settings.LastUserEmail;
+            UserLoginPassword.Text = Settings.LastUserPassword;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -38,6 +41,9 @@ namespace BookingApplication
                 await App.Current.MainPage.DisplayAlert("Уведомление", "Авторизация прошла успешно","ОК");
 
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+
+                Settings.LastUserEmail = UserLoginEmail.Text;
+                Settings.LastUserPassword = UserLoginPassword.Text;
                 
             }
             catch (Exception ex)

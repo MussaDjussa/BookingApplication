@@ -17,12 +17,8 @@ namespace BookingApplication
         public PopupFeedbackPage()
         {
             InitializeComponent();
-            //BindingContext = this;
+            
         }
-        //public string FIO { get; set; }
-
-        //public string Description { get; set; }
-        //public string Panishment { get; set; }
 
 
         private void Button_Clicked(object sender, EventArgs e)

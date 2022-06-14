@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.Page1">
+    <ContentPage.Content>
+        <StackLayout
+            Margin="40">
+            <Frame BackgroundColor="#7a15a3" CornerRadius="0">
+                <Label Text="Окно бронирования"
+                   FontAttributes="Bold"
+                   FontSize="Title"
+                       TextColor="White"/>
+            </Frame>
+
+            <StackLayout Margin="20">
+
+                <Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+                            <Label Text="Начало"/>
+
+
+                            <TimePicker x:Name="timePickerStart" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Конец"/>
+
+                            <TimePicker x:Name="timePickerEnd"/>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+                <Label Text="Тип комнаты"/>
+
+                <Picker x:Name="pickerRoom" >
+                    <Picker.Items>
+                        <x:String>стандарт</x:String>
+                        <x:String>вип</x:String>
+                        <x:String>игровая приставка</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Номер игрового устройства"
+                       Margin="0,10"/>
+                    <Entry Margin="10,0,0,0"
+                           WidthRequest="100"
+                           HorizontalTextAlignment="Center"
+                       x:Name="deviceNumber"/>
+                </StackLayout>
+
+                <Label Text="Комментарий" Margin="0,10"/>
+                <Entry x:Name="comment"/>
+
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="EndAndExpand">
+                    <Button Text="Отменить"
+                            BackgroundColor="Transparent"
+                            TextColor="Red"
+                        Clicked="Button_Clicked"/>
+                    <Button Text="Сохранить"
+                        TextColor="White"
+                        BackgroundColor="#3d54fc"
+                        Clicked="Button_Clicked_1"/>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

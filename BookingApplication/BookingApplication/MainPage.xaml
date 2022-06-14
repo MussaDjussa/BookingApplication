@@ -3,35 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingApplication.MainPage"
              Shell.NavBarIsVisible="True"
-             Title="Главная">
+             Title="Главная"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
 
     <ContentPage.ToolbarItems >
         <ToolbarItem Text="Выйти" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
-    <ScrollView>
+    <ScrollView HeightRequest="3000">
 
         <StackLayout>
             <Frame Padding="0"
-                   HeightRequest="120">
-                <Grid Background="#2196F3">
-                    <Image Source="maintitle" Aspect="AspectFill" Opacity="0.7"/>
-                    <Label Text="Добро пожаловать!"
-                           TextColor="White"
+                   HeightRequest="220">
+                <Grid Background="White
+                      ">
+                    <Image Source="maintitle" Aspect="AspectFill" Opacity="0.4"
+                     />
+
+                    <Label Text="Добро пожаловать 💜"
+                           TextColor="#031341"
                            VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Center"
-                           FontSize="Title"
-                           FontAttributes="Bold"/>
+                           FontSize="28"
+                           Opacity="0.7"
+                           FontAttributes="Bold"
+                           />
+
+
                 </Grid>
             </Frame>
 
-            <Label Text="Наши клубы находятся по адресу"  Padding="30,10,30,10"/>
+            <Label Text="Наши клубы находятся по адресу"
+                   FontSize="18"
+                   HorizontalTextAlignment="Start"
+                   Padding="30,10,30,10"
+                   FontAttributes="Bold"/>
+            
+            
 
+
+            <maps:Map HeightRequest="300" IsShowingUser="True" x:Name="map"/>
+
+            <Button Text="Открыть в приложении"/>
 
             <Label Text="Тарифы" HorizontalTextAlignment="Center" FontSize="Body" Padding="30,10,30,10"/>
+
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
+            <BoxView HeightRequest="300"/>
         </StackLayout>
-        
+
 
     </ScrollView>
 </ContentPage>
