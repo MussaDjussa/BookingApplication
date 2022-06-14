@@ -18,5 +18,8 @@ namespace BookingApplication
         public string TypeRoom { get; set; } = "стандарт";
 
         public string DeviceNumber { get; set; }
+
+        public string StartRegion { get; set; }     
+        public string EndRegion { get; set; }   
     }
 }

@@ -26,13 +26,15 @@
                         <Label Text="Начало"/>
 
 
-                        <TimePicker x:Name="timePickerStart" />
+                        <TimePicker x:Name="timePickerStart" 
+                                    PropertyChanged="timePickerStart_PropertyChanged"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1">
                         <Label Text="Конец"/>
 
-                        <TimePicker x:Name="timePickerEnd"/>
+                        <TimePicker x:Name="timePickerEnd"
+                                    PropertyChanged="timePickerEnd_PropertyChanged"/>
                     </StackLayout>
                 </Grid>
             </Grid>

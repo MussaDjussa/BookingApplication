@@ -9,7 +9,7 @@
     <StackLayout Background="white"
                  >
         <syncfusion:SfSchedule x:Name="Schedule"
-                                 ScheduleView="MonthView"
+                               ScheduleView="MonthView"
                                Locale="ru"
                                TimeZone="Russian Standard Time"
                                VerticalOptions="FillAndExpand"
@@ -20,9 +20,11 @@
                 <syncfusion:ScheduleAppointmentMapping
 			SubjectMapping="Subject" 
 			StartTimeMapping="StartTimeZone"
-			EndTimeMapping="EndTimeZone">
+			EndTimeMapping="EndTimeZone"
+            StartTimeZoneMapping="StartRegion"
+            EndTimeZoneMapping="EndRegion">
                 </syncfusion:ScheduleAppointmentMapping>
-                
+
             </syncfusion:SfSchedule.AppointmentMapping>
             <syncfusion:SfSchedule.MonthViewSettings>
                 <syncfusion:MonthViewSettings ShowAgendaView="True">
@@ -33,9 +35,6 @@
             </syncfusion:SfSchedule.MonthViewSettings>
 
         </syncfusion:SfSchedule>
-
-        <Button Clicked="Button_Clicked"/>
-
     </StackLayout>
 
 </ContentPage>
