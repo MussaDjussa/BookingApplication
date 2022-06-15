@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Firebase.Database;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Firebase.Database.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,47 +15,46 @@ namespace BookingApplication
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : ContentPage
     {
+
+        public ObservableCollection<Booking> Meetings =new ObservableCollection<Booking>();
+
+        FirebaseClient firebaseClient = new FirebaseClient("https://compclubdb-default-rtdb.europe-west1.firebasedatabase.app/");
+
         public Page1()
         {
             InitializeComponent();
+            BindingContext = this;
+        }
+        public async void GetAllEmployee()
+        {
 
-            timePickerStart.Time = new TimeSpan(DateTime.Now.Hour,DateTime.Now.Minute,DateTime.Now.Second);
-            timePickerEnd.Time = new TimeSpan(DateTime.Now.Hour+1, DateTime.Now.Minute, DateTime.Now.Second);
+            var list = (await firebaseClient.Child("Booking").OnceAsync<Booking>()).Select(q => new Booking
+            {
+                DeviceNumber = q.Object.DeviceNumber,
+                EndRegion = q.Object.EndRegion,
+                StartRegion = q.Object.StartRegion,
+                EndTimeZone = q.Object.EndTimeZone,
+                Note = q.Object.Note,
+                StartTimeZone = q.Object.StartTimeZone,
+                Subject = q.Object.Subject,
+                TypeRoom = q.Object.TypeRoom,
+
+            });
+
+            foreach (var item in list)
+            {
+                Meetings.Add(item);
+            }
+            
 
         }
-
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            //Dismiss(null);
-        }
+            GetAllEmployee();
 
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
+            collection.ItemsSource = Meetings;
 
-            //AppointmentModel model = new AppointmentModel()
-            //{
-            //    EndTime = new TimeSpan(timePickerEnd.Time.Hours, timePickerEnd.Time.Minutes, timePickerEnd.Time.Seconds).ToString(),
-            //    StartTime = new TimeSpan(timePickerStart.Time.Hours, timePickerStart.Time.Minutes, timePickerStart.Time.Seconds).ToString(),
-            //    TypeRoom = pickerRoom.SelectedItem.ToString(),
-            //    Note = comment.Text,
-            //    DeviceNumber = deviceNumber.Text,
-
-
-            //};
-
-            //App.bookingViewModel.appointmentcollection.Add(model);
-            //App.bookingViewModel.scheduleAppointmentCollection.Add(new Syncfusion.SfSchedule.XForms.ScheduleAppointment()
-            //{
-
-            //    StartTime = DateTime.Parse(model.StartTime),
-            //    EndTime = DateTime.Parse(model.EndTime),
-            //    StartTimeZone = model.StartTimeZone,
-            //    EndTimeZone = model.EndTimeZone,
-            //    Notes = model.Note,
-            //    Subject = model.Subject,
-
-            //});
         }
     }
 }

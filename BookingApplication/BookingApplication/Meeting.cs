@@ -7,19 +7,19 @@ namespace BookingApplication
     public class Meeting
     {
 
-        public string Subject { get; set; } = "Запланированная бронь";
+        public string Subject { get; set; } 
 
-        public DateTime StartTimeZone { get; set; } = DateTime.Now;
+        public DateTime StartTimeZone { get; set; } 
 
-        public DateTime EndTimeZone { get; set; } = DateTime.Now;
+        public DateTime EndTimeZone { get; set; } 
 
-        public string Note { get; set; } = string.Empty;
+        public string Note { get; set; }
 
-        public string TypeRoom { get; set; } = "стандарт";
+        //public string TypeRoom { get; set; } = "стандарт";
 
-        public string DeviceNumber { get; set; }
+        //public string DeviceNumber { get; set; }
 
-        public string StartRegion { get; set; }     
-        public string EndRegion { get; set; }   
+        public string StartRegion { get; set; }
+        public string EndRegion { get; set; }
     }
 }

@@ -43,7 +43,6 @@
                        HeightRequest="80">
 
                             <Label x:Name="Greeting"
-                       Text="Доброе утро"
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
                        Opacity="0.7"

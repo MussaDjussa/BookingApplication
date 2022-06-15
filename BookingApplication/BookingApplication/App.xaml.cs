@@ -32,9 +32,9 @@ namespace BookingApplication
 
             InitializeComponent();
 
-            //MainPage = new AppShell();
+            MainPage = new AppShell();
             //MainPage = new MainPage();
-            MainPage = new BookingPage();
+            //MainPage = new BookingPage();
         }
 
         protected override void OnStart()

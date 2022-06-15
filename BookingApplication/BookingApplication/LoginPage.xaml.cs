@@ -21,6 +21,40 @@ namespace BookingApplication
             InitializeComponent();
             UserLoginEmail.Text = Settings.LastUserEmail;
             UserLoginPassword.Text = Settings.LastUserPassword;
+
+            SetUpTime();
+        }
+
+
+        public void SetUpTime()
+        {
+            Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+              {
+
+                  if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 17)
+                  {
+                      Greeting.Text = "Добрый день";
+                  }
+                  if (DateTime.Now.Hour >= 17 && DateTime.Now.Hour > 12)
+                  {
+                      Greeting.Text = "Добрый вечер";
+                  }
+                  if (DateTime.Now.Hour >= 21)
+                  {
+                      Greeting.Text = "Доброй ночи";
+                  }
+                  if (DateTime.Now.Hour <= 5)
+                  {
+                      Greeting.Text = "Доброй ночи";
+                  }
+
+                  if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour <= 12)
+                  {
+                      Greeting.Text = "Доброе утро";
+                  }
+
+                  return true;
+              });
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

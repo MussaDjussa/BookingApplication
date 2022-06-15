@@ -15,12 +15,9 @@
 
         <StackLayout>
             <Frame Padding="0"
-                   HeightRequest="220">
+                   HeightRequest="100">
                 <Grid Background="White
                       ">
-                    <Image Source="maintitle" Aspect="AspectFill" Opacity="0.4"
-                     />
-
                     <Label Text="Добро пожаловать 💜"
                            TextColor="#031341"
                            VerticalTextAlignment="Center"

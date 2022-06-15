@@ -6,6 +6,9 @@
              Shell.NavBarIsVisible="True"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
              Title="Бронирование">
+
+    <RefreshView RefreshColor="Red" x:Name="refresher" Refreshing="RefreshView_Refreshing">
+        <ScrollView>    
     <StackLayout Background="white"
                  >
         <syncfusion:SfSchedule x:Name="Schedule"
@@ -36,5 +39,6 @@
 
         </syncfusion:SfSchedule>
     </StackLayout>
-
+        </ScrollView>
+    </RefreshView>
 </ContentPage>
