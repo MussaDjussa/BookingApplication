@@ -15,46 +15,34 @@ namespace BookingApplication
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : ContentPage
     {
-
-        public ObservableCollection<Booking> Meetings =new ObservableCollection<Booking>();
-
-        FirebaseClient firebaseClient = new FirebaseClient("https://compclubdb-default-rtdb.europe-west1.firebasedatabase.app/");
-
+        public ObservableCollection<UserGuide> Guids { get; set; } = new ObservableCollection<UserGuide>();
         public Page1()
         {
             InitializeComponent();
             BindingContext = this;
-        }
-        public async void GetAllEmployee()
-        {
-
-            var list = (await firebaseClient.Child("Booking").OnceAsync<Booking>()).Select(q => new Booking
+            vid.Source = "ms-appx:///prikol.mp4";
+            carouselView.ItemsSource = Guids;
+            Guids.Add(new UserGuide()
             {
-                DeviceNumber = q.Object.DeviceNumber,
-                EndRegion = q.Object.EndRegion,
-                StartRegion = q.Object.StartRegion,
-                EndTimeZone = q.Object.EndTimeZone,
-                Note = q.Object.Note,
-                StartTimeZone = q.Object.StartTimeZone,
-                Subject = q.Object.Subject,
-                TypeRoom = q.Object.TypeRoom,
-
+                Header = "1. Этап",
+                Caption = " - Пройдите регистрацию, а затем авторизацию",
+                Image = "hello.png",
+            });Guids.Add(new UserGuide()
+            {
+                Header = "2. Этап",
+                Caption = " - Пройдите регистрацию, а затем авторизацию",
+                Image = "hello.png",
+            });Guids.Add(new UserGuide()
+            {
+                Header = "3. Этап",
+                Caption = "Пройдите регистрацию, а затем авторизацию",
+                Image = "hello.png",
+            });Guids.Add(new UserGuide()
+            {
+                Header = "4. Этап",
+                Caption = "Пройдите регистрацию, а затем авторизацию",
+                Image = "hello.png",
             });
-
-            foreach (var item in list)
-            {
-                Meetings.Add(item);
-            }
-            
-
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            GetAllEmployee();
-
-            collection.ItemsSource = Meetings;
-
         }
     }
 }

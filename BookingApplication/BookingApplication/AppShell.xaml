@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:BookingApplication">
 
     <!--маршруты-->
+
+    <ShellItem Route="PreviewPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:PreviewPage}" />
+    </ShellItem>
+
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </ShellItem>

@@ -18,6 +18,7 @@ namespace BookingApplication
         public RegistrationPage()
         {
             InitializeComponent();
+            vid.Source = "ms-appx:///prikol.mp4";
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

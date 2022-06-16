@@ -1,33 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:bookingapplication="clr-namespace:BookingApplication"
-             x:Class="BookingApplication.Page1">
+             x:Class="BookingApplication.Page1"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <ContentPage.Content>
-
-        <StackLayout Margin="40">
-            <CollectionView ItemsSource="{Binding Meetings}" HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            x:Name="collection">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="bookingapplication:Booking">
-                    <StackLayout Margin="10">
-                        <Label Text="{Binding Subject}" TextColor="Red" />
-                            <Label Text="{Binding StartTimeZone}" />
-                            <Label Text="{Binding EndTimeZone}" />
-                            <Label Text="{Binding Note}" />
-                            <Label Text="{Binding TypeRoom}" />
-                            <Label Text="{Binding DeviceNumber}" />
-                            <Label Text="{Binding StartRegion}" />
-                            <Label Text="{Binding EndRegion}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-            <Button Clicked="Button_Clicked"
-                    Text="GET"
-                    Margin="40"/>
-        </StackLayout>
         
+        <Grid>
+            <xct:MediaElement x:Name="vid"
+                              Aspect="AspectFill"
+                              AutoPlay="True"
+                              IsLooping="True"
+                              ShowsPlaybackControls="False"
+                              />
+
+            <BoxView Opacity="0.8">
+                <BoxView.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                        <GradientStop Color="#292929" Offset="0"/>
+                        <GradientStop Color="Transparent" Offset="0.3"/>
+                        <GradientStop Color="#470808" Offset="0.75"/>
+                            
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+
+            <StackLayout Margin="30,30,140,0" WidthRequest="120">
+                <Label Text="Руководство"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="36"
+                   Padding="0"/>
+                <Label Text="пользователя"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   Margin="0,-8,0,0"
+                   Padding="0"/>
+
+                <BoxView BackgroundColor="White"
+                         HeightRequest="2"
+                         WidthRequest="10"
+                         />
+            </StackLayout>
+
+            
+
+            <StackLayout VerticalOptions="CenterAndExpand"
+                         HeightRequest="300"
+                         Margin="30,0,30,0">
+                <CarouselView IndicatorView="LandingIndicator"
+                              x:Name="carouselView"
+                              ItemsSource="{Binding Guids}"
+                              VerticalOptions="End">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Label Text="{Binding Header}" TextColor="White" FontSize="26" FontAttributes="Bold"
+                                       WidthRequest="220" HorizontalOptions="Start"/>
+                                <BoxView BackgroundColor="White"
+                         HeightRequest="1"
+                                         Opacity="0.2"
+                         WidthRequest="10"
+                         />
+                                <Label Text="{Binding Caption}" TextColor="White" FontSize="14" WidthRequest="250"
+                                       HorizontalOptions="Start"/>
+                                
+                                <Image Source="{Binding Image}"
+                                       HeightRequest="200"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name ="LandingIndicator"  IndicatorsShape="Circle" 
+                               IndicatorColor="White" SelectedIndicatorColor="Red"
+                               Opacity="0.8"
+                               Margin="0"/>
+
+            </StackLayout>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

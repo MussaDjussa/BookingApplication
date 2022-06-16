@@ -17,6 +17,9 @@ namespace BookingApplication
             InitializeComponent();
 
 
+            Routing.RegisterRoute(nameof(PreviewPage),
+                typeof(PreviewPage));
+
             Routing.RegisterRoute(nameof(LoginPage),
                 typeof(LoginPage));
             Routing.RegisterRoute(nameof(RegistrationPage),
