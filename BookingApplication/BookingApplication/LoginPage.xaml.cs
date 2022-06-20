@@ -91,29 +91,30 @@ namespace BookingApplication
                 App.ClientModel.Email = getRole.Object.Email;
                 App.ClientModel.RoleType = getRole.Object.RoleType;
                 App.ClientModel.UserName = getRole.Object.UserName;
+                await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
 
                 #endregion
 
-                switch (getRole.Object.RoleType)
-                {
-                    case "client":
-                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                        #region setrole
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Main = true;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = true;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = true;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = true;
-                        break;
-                    #endregion
-                    case "admin":
-                        #region setrole
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Main = false;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = false;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = false;
-                        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = false;
-                        break;
-                        #endregion
-                }
+                //switch (getRole.Object.RoleType)
+                //{
+                //    case "client":
+                //        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                //        #region setrole
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Main = true;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = true;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = true;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = true;
+                //        break;
+                //    #endregion
+                //    case "admin":
+                //        #region setrole
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Main = false;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = false;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = false;
+                //        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = false;
+                //        break;
+                //        #endregion
+                //}
 
 
             }

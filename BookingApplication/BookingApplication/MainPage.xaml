@@ -2,23 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingApplication.MainPage"
-             Shell.NavBarIsVisible="True"
+             Shell.NavBarIsVisible="False"
              Title="Главная"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
     <ContentPage.ToolbarItems >
         <ToolbarItem Text="Выйти" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
 
 
-    <ScrollView HeightRequest="3000">
 
-        <StackLayout>
-            <Frame Padding="0"
-                   HeightRequest="100">
-                <Grid Background="White
-                      ">
-                    <Label Text="Добро пожаловать 💜"
+    <Grid BackgroundColor="#ededed">
+        <ScrollView HeightRequest="3000">
+        <yummy:PancakeView BackgroundColor="White"
+                       Margin="0,80,0,0"
+                       CornerRadius="30,30,0,0">
+            <StackLayout Margin="0,40,0,0">
+                <Label Text="Добро пожаловать 💜"
                            TextColor="#031341"
                            VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Center"
@@ -26,28 +27,287 @@
                            Opacity="0.7"
                            FontAttributes="Bold"
                            />
-
-
-                </Grid>
-            </Frame>
-
-            <Label Text="Наши клубы находятся по адресу"
-                   FontSize="18"
-                   HorizontalTextAlignment="Start"
+                <BoxView HeightRequest="1" BackgroundColor="DarkBlue"
+                         Margin="20,16,20,0"
+                         />
+                <Label Text="Наши клубы находятся по адресу"
+                   FontSize="14"
+                   TextColor="#3128de"
+                   HorizontalTextAlignment="Center"
                    Padding="30,10,30,10"
-                   FontAttributes="Bold"/>
-            
-            
+                   FontAttributes="None"
+                   Margin="0,0,0,0"/>
+
+                    <maps:Map HeightRequest="600"
+                      IsShowingUser="True"
+                      x:Name="map"/>
+
+                    <BoxView HeightRequest="1" BackgroundColor="DarkBlue"
+                         Margin="20,16,20,0"/>
+
+                    <Label Text="Тарифы STANDART"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="14"
+                           Padding="30,10,30,10"
+                   TextColor="#3128de"/>
+
+                    <Frame HeightRequest="340"
+                           BackgroundColor="Transparent">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Frame BackgroundColor="White" CornerRadius="15"
+                                     Margin="0"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.15">
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#CC00FF" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+                                
+                                <StackLayout Margin="20"
+                                             VerticalOptions="CenterAndExpand">
+                                    <Label Text="ПАКЕТЫ" TextColor="#A252C8" FontSize="20" Padding="0"/>
+                                    <Label Text="ЗАЛ" TextColor="#A252C8" FontSize="20" Padding="0"/>
+                                    <Label Text="STANDART" TextColor="#A252C8" FontSize="22" Padding="0"
+                                           FontAttributes="Bold"/>
+                                </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                   CornerRadius="15"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#C8528B" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Дневной" TextColor="#C8528B" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="3 часа" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 8:00 до 13:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="170 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Row="1"
+                                   CornerRadius="15"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#28ded2" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Ночной" TextColor="#A252C8" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="10 часов" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 22:00 до 00:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="350 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Column="1"
+                                     CornerRadius="15"
+                                    Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#C86F52" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Утренний" TextColor="#C86F52" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="2 часа" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 8:00 до 10:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="150 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                        
+                    </Frame>
 
 
-            <maps:Map HeightRequest="600" IsShowingUser="True" x:Name="map"/>
 
-            <Label Text="Тарифы" HorizontalTextAlignment="Center" FontSize="Body" Padding="30,10,30,10"/>
+                    <Label Text="Тарифы VIP"
+                           HorizontalOptions="CenterAndExpand"
+                           FontSize="14"
+                           Padding="30,10,30,10"
+                   TextColor="#3128de"/>
 
-            <Image Source="rates.jpg" Aspect="AspectFill"/>
+                    <Frame HeightRequest="340"
+                           BackgroundColor="Transparent">
 
-        </StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
 
-    </ScrollView>
+                            <Frame BackgroundColor="White" CornerRadius="15"
+                                     Margin="0"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.15">
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#CC00FF" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout Margin="20"
+                                             VerticalOptions="CenterAndExpand">
+                                        <Label Text="ПАКЕТЫ" TextColor="#A252C8" FontSize="20" Padding="0"/>
+                                        <Label Text="ЗАЛ" TextColor="#A252C8" FontSize="20" Padding="0"/>
+                                        <Label Text="VIP" TextColor="#A252C8" FontSize="22" Padding="0"
+                                           FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                   CornerRadius="15"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#C8528B" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Дневной" TextColor="#C8528B" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="3 часа" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 8:00 до 13:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="210 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Row="1"
+                                   CornerRadius="15"
+                                   Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#28ded2" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Ночной" TextColor="#A252C8" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="10 часов" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 22:00 до 00:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="500 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+
+                            </Frame>
+                            <Frame BackgroundColor="White"
+                                     Grid.Column="1"
+                                     CornerRadius="15"
+                                    Padding="0">
+                                <Grid Padding="0">
+                                    <BoxView Opacity="0.2" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <GradientStop Color="Transparent" Offset="0.2"/>
+                                                <GradientStop Color="#C86F52" Offset="0.95" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                             VerticalOptions="StartAndExpand"
+                                                 Margin="15">
+                                        <Label Text="Утренний" TextColor="#C86F52" FontAttributes="Bold" FontSize="20" Padding="0" HorizontalOptions="CenterAndExpand"
+                                               Margin="0,0,0,8"/>
+                                        <Label Text="2 часа" TextColor="#3128de" FontSize="14" Padding="0" HorizontalOptions="CenterAndExpand" Margin="0,0,0,8"/>
+                                        <Label Text="с 8:00 до 10:00" TextColor="#3128de" FontSize="14" Padding="0" Margin="0,0,0,8"/>
+                                        <Label Text="200 ₽" TextColor="#A252C8" FontAttributes="Bold"  Padding="0" 
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSize="24"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
+                    </Frame>
+                </StackLayout>
+        </yummy:PancakeView>
+        </ScrollView>
+    </Grid>
+   
+    
 </ContentPage>

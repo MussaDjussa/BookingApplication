@@ -32,7 +32,7 @@ namespace BookingApplication
         public static AppShell appShell = new AppShell();
         public App()
         {
-            MainPage = appShell;
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
