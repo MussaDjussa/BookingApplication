@@ -20,5 +20,7 @@ namespace BookingApplication
 
         public string StartRegion { get; set; }
         public string EndRegion { get; set; }
+        public string Background { get; set; }
+
     }
 }

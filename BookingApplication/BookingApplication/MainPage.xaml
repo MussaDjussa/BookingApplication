@@ -40,19 +40,12 @@
             
 
 
-            <maps:Map HeightRequest="300" IsShowingUser="True" x:Name="map"/>
-
-            <Button Text="Открыть в приложении"/>
+            <maps:Map HeightRequest="600" IsShowingUser="True" x:Name="map"/>
 
             <Label Text="Тарифы" HorizontalTextAlignment="Center" FontSize="Body" Padding="30,10,30,10"/>
 
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
-            <BoxView HeightRequest="300"/>
+            <Image Source="rates.jpg" Aspect="AspectFill"/>
+
         </StackLayout>
 
 

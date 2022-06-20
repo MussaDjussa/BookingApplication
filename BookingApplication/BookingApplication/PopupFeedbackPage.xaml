@@ -20,7 +20,8 @@
 
                 <TableSection Title="Меры, принятые по заявлению администрации"
                              >
-                    <EntryCell Placeholder="Опишите принятые меры" x:Name="Panishment"
+                    <EntryCell Placeholder="Опишите принятые меры"
+                               x:Name="Panishment"
                               />
                 </TableSection>
 

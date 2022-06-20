@@ -39,10 +39,57 @@ namespace BookingApplication
 
             Schedule.DataSource = App.bookingViewModel.appointmentcollection;
         }
-        
+
+        protected async override void OnAppearing()
+        {
+            try
+            {
+                App.bookingViewModel.appointmentcollection.Clear();
+
+                var list = (await firebaseClient.Child("Booking").OnceAsync<Booking>()).Select(q => new Booking
+                {
+                    DeviceNumber = q.Object.DeviceNumber,
+                    EndRegion = q.Object.EndRegion,
+                    StartRegion = q.Object.StartRegion,
+                    EndTimeZone = q.Object.EndTimeZone,
+                    Note = q.Object.Note,
+                    StartTimeZone = q.Object.StartTimeZone,
+                    Subject = q.Object.Subject,
+                    TypeRoom = q.Object.TypeRoom,
+                    Background = q.Object.Background,
+                });
+
+                foreach (var item in list)
+                {
+                    App.bookingViewModel.appointmentcollection.Add(new Meeting()
+                    {
+
+                        //DeviceNumber = item.DeviceNumber,
+                        EndRegion = item.EndRegion,
+                        StartRegion = item.StartRegion,
+                        StartTimeZone = DateTime.Parse(item.StartTimeZone),
+                        EndTimeZone = DateTime.Parse(item.EndTimeZone),
+                        Note = item.Note,
+                        Subject = $"{item.Subject} - {item.TypeRoom}",
+                        ColorZone = Color.FromHex(item.Background),
+                        //TypeRoom = item.TypeRoom,
+                    });
+                }
+
+                await Task.Delay(3000);
+
+                Schedule.DataSource = App.bookingViewModel.appointmentcollection;
+                refresher.IsRefreshing = false;
+            }
+            catch (NullReferenceException)
+            {
+                await App.Current.MainPage.DisplayAlert("Ошибка", "Что-то пошло не так...", "OK");
+            }
+        }
+
         public void SetUp()
         {
-            Device.StartTimer(new TimeSpan(0, 0, 1), () => {
+            Device.StartTimer(new TimeSpan(0, 10, 0), () => {
 
                 Schedule.MinDisplayDate = DateTime.Now;
                 Schedule.MaxDisplayDate = DateTime.Now.AddDays(14);
@@ -58,6 +105,7 @@ namespace BookingApplication
       
         private async void RefreshView_Refreshing(object sender, EventArgs e)
         {
+            try { 
             App.bookingViewModel.appointmentcollection.Clear();
 
             var list = (await firebaseClient.Child("Booking").OnceAsync<Booking>()).Select(q => new Booking
@@ -70,7 +118,7 @@ namespace BookingApplication
                 StartTimeZone = q.Object.StartTimeZone,
                 Subject = q.Object.Subject,
                 TypeRoom = q.Object.TypeRoom,
-
+                Background = q.Object.Background,
             });
 
             foreach (var item in list)
@@ -83,14 +131,42 @@ namespace BookingApplication
                     StartTimeZone = DateTime.Parse(item.StartTimeZone),
                     EndTimeZone = DateTime.Parse(item.EndTimeZone),
                     Note = item.Note,
-                    Subject = item.Subject,
+                    Subject = $"{item.Subject} - {item.TypeRoom}",
+                    ColorZone = Color.FromHex(item.Background),
                     //TypeRoom = item.TypeRoom,
                 });
             }
-            Schedule.DataSource = App.bookingViewModel.appointmentcollection;
+            
             await Task.Delay(3000);
-            refresher.IsRefreshing = false;
 
+            Schedule.DataSource = App.bookingViewModel.appointmentcollection;
+            refresher.IsRefreshing = false;
+            }
+            catch(NullReferenceException)
+            {
+                await App.Current.MainPage.DisplayAlert("Ошибка", "Что-то пошло не так...","OK");
+            }
+        }
+
+        private void week_Clicked(object sender, EventArgs e)
+        {
+            Schedule.ScheduleView = ScheduleView.WeekView;
+        }
+
+        private void month_Clicked(object sender, EventArgs e)
+        {
+            Schedule.ScheduleView = ScheduleView.MonthView;
+        }
+
+        private void Schedule_CellLongPressed(object sender, CellTappedEventArgs e)
+        {
+            Navigation.ShowPopup(new PopupBookingList(e.Appointments));
+        }
+
+        public Meeting MeetingTemp { get; set; } = new Meeting(); 
+        private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
+        {
+            var value = e.Appointments;
         }
     }
 }

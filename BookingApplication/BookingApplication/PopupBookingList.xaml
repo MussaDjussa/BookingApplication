@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prikol:Popup  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BookingApplication.PopupBookingList"
+              xmlns:prikol="http://xamarin.com/schemas/2020/toolkit"
+               Size="380,500">
+    <StackLayout Margin="10">
+
+        <CollectionView x:Name="collection">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Margin="0,10">
+                    <Frame BorderColor="{Binding ColorZone}"
+                          
+                           >
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                       
+                        
+                        
+                        <StackLayout Grid.Column="0">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Subject}"
+                                       FontSize="Title"
+                                       FontAttributes="Bold"/>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Начало"/>
+                                <Label Text=" | "/>
+                                <Label Text="{Binding StartTimeZone}"/>
+                            </StackLayout>
+
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Конец"/>
+                                <Label Text=" | "/>
+                                <Label Text="{Binding EndTimeZone}"/>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <Label Text="{Binding Note}"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                            <StackLayout Grid.Column="1" 
+                                         VerticalOptions="CenterAndExpand">
+                                <Button Text="❌" 
+                                        BackgroundColor="Transparent"
+                                        BorderWidth="1"
+                                        BorderColor="Red"
+                                        TextColor="White"
+                                        WidthRequest="70"
+                                        HeightRequest="40"
+                                        Clicked="Button_Clicked"/>
+                                <Button Text="🛠"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="#d49708"
+                                        BorderWidth="1"
+                                        TextColor="White"
+                                        WidthRequest="70"
+                                        HeightRequest="40"
+                                        Clicked="Button_Clicked_1"/>
+                            </StackLayout>
+                            
+                        </Grid>
+                    </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </StackLayout>
+</prikol:Popup>

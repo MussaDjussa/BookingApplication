@@ -21,5 +21,7 @@ namespace BookingApplication
         public string TypeRoom { get; set; }
 
         public string DeviceNumber { get; set; }
+
+        public string Background { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace BookingApplication
         public AppShell()
         {
             InitializeComponent();
+
+            BindingContext = App.StateViewModel;
 
 
             Routing.RegisterRoute(nameof(PreviewPage),

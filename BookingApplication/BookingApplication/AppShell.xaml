@@ -5,7 +5,7 @@
              
              xmlns:local="clr-namespace:BookingApplication">
 
-    <!--маршруты-->
+    <!--маршруты, порядок запуска-->
 
     <ShellItem Route="PreviewPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:PreviewPage}" />
@@ -15,30 +15,35 @@
         <ShellContent ContentTemplate="{DataTemplate local:LoginPage}" />
     </ShellItem>
 
-    <ShellItem Route="MainPage" FlyoutItemIsVisible="False">
+    <ShellItem Route="MainPage" FlyoutItemIsVisible="True">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </ShellItem>
 
-    <ShellItem Route="RegistrationPage" FlyoutItemIsVisible="True">
+    <ShellItem Route="RegistrationPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:RegistrationPage}" />
     </ShellItem>
 
 
     <!--вкладки-->
-    <FlyoutItem Title="Главная">
-        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"
-                      FlyoutItemIsVisible="False"/>
+    <FlyoutItem Title="Главная" 
+                x:Name="mainFlyoutItem"
+                IsVisible="{Binding ShouldDisplayFlyoutItem_Main}">
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" 
+                      Route="MainPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Бронирование">
+    <FlyoutItem Title="Бронирование"
+                 IsVisible="{Binding ShouldDisplayFlyoutItem_Booking}">
         <ShellContent ContentTemplate="{DataTemplate local:BookingPage}" Route="BookingPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Отзывы">
+    <FlyoutItem Title="Отзывы"
+                 IsVisible="{Binding ShouldDisplayFlyoutItem_FeadBack}">
         <ShellContent ContentTemplate="{DataTemplate local:FeedbackTabbedPage}" Route="FeedbackTabbedPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Доп.услуги">
+    <FlyoutItem Title="Доп.услуги"
+                 IsVisible="{Binding ShouldDisplayFlyoutItem_Addition}">
         <ShellContent ContentTemplate="{DataTemplate local:AdditionServiceTabbedPage}" Route="AdditionServiceTabbedPage"/>
     </FlyoutItem>
 </Shell>

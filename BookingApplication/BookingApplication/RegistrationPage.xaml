@@ -69,7 +69,7 @@
                                    FontAttributes="Bold"
                                    FontSize="26"
                                    Margin="0,40,0,20"/>
-                            <Entry Placeholder="Как Вас зовут?" Opacity="0.75" x:Name="UserName"/>
+                            <Entry Placeholder="Как Вас зовут?" Opacity="0.75" x:Name="UserName" TextChanged="UserName_TextChanged"/>
                             <Entry Placeholder="Введите почту" Opacity="0.75" x:Name="UserNewEmail"/>
                             <Entry IsPassword="True" Placeholder="Придумайте пароль" Opacity="0.75"  x:Name="UserNewPassword"/>
                             <Button Text="Зарегистрироваться"

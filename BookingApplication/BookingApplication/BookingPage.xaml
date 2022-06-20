@@ -5,19 +5,24 @@
              Visual="Material"
              Shell.NavBarIsVisible="True"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             Title="Бронирование">
+             Title="Бронирование"
+             >
 
-    <RefreshView RefreshColor="Red" x:Name="refresher" Refreshing="RefreshView_Refreshing">
+    <RefreshView RefreshColor="Red" x:Name="refresher" 
+                 Refreshing="RefreshView_Refreshing">
         <ScrollView>    
     <StackLayout Background="white"
                  >
-        <syncfusion:SfSchedule x:Name="Schedule"
+
+             
+                <syncfusion:SfSchedule x:Name="Schedule"
                                ScheduleView="MonthView"
                                Locale="ru"
                                TimeZone="Russian Standard Time"
                                VerticalOptions="FillAndExpand"
                                CellDoubleTapped="schedule_CellDoubleTapped"
-                               >
+                               CellLongPressed="Schedule_CellLongPressed"
+                               CellTapped="Schedule_CellTapped">
 
             <syncfusion:SfSchedule.AppointmentMapping>
                 <syncfusion:ScheduleAppointmentMapping
@@ -25,7 +30,8 @@
 			StartTimeMapping="StartTimeZone"
 			EndTimeMapping="EndTimeZone"
             StartTimeZoneMapping="StartRegion"
-            EndTimeZoneMapping="EndRegion">
+            EndTimeZoneMapping="EndRegion"
+            ColorMapping="ColorZone">
                 </syncfusion:ScheduleAppointmentMapping>
 
             </syncfusion:SfSchedule.AppointmentMapping>

@@ -14,6 +14,9 @@ namespace BookingApplication
 
         static UserDB userDB;
 
+        public static PageStateViewModel StateViewModel = new PageStateViewModel();
+        public static ClientModel ClientModel = new ClientModel();
+
         public static UserDB UserDB
         {
             get
@@ -26,15 +29,10 @@ namespace BookingApplication
                 return userDB;
             }
         }
-
+        public static AppShell appShell = new AppShell();
         public App()
         {
-
-            InitializeComponent();
-
-            MainPage = new AppShell();
-            //MainPage = new MainPage();
-            //MainPage = new BookingPage();
+            MainPage = appShell;
         }
 
         protected override void OnStart()
