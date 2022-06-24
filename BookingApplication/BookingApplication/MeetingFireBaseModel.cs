@@ -9,10 +9,10 @@ namespace BookingApplication
         public string Subject { get; set; }
 
         public string StartTimeZone { get; set; }
-        
-        public string StartRegion { get; set; }
 
-        public string EndRegion { get; set; }
+        public string StartRegion { get; set; } = "Russian Standard Time";
+
+        public string EndRegion { get; set; } = "Russian Standard Time";
 
         public string EndTimeZone { get; set; }
 
@@ -23,5 +23,7 @@ namespace BookingApplication
         public string DeviceNumber { get; set; }
 
         public string Background { get; set; }
+
+        public string UserID { get; set; }
     }
 }

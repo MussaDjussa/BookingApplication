@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Firebase.Database.Query;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using BookingApplication.Helpers;
 
 namespace BookingApplication
 {
@@ -25,24 +26,48 @@ namespace BookingApplication
             Guids.Add(new UserGuide()
             {
                 Header = "1. Этап",
-                Caption = " - Пройдите регистрацию, а затем авторизацию",
-                Image = "hello.png",
+                Caption = " - Пройдите регистрацию, а затем пройдите авторизацию",
+                Image = "preauth.png",
             });Guids.Add(new UserGuide()
             {
                 Header = "2. Этап",
-                Caption = " - Пройдите регистрацию, а затем авторизацию",
-                Image = "hello.png",
+                Caption = " - После успешной регистрации, откроется главное окно, где потребуется свайпнуть слева, чтобы открыть выдвигающееся меню",
+                Image = "swipeprevi.png",
             });Guids.Add(new UserGuide()
             {
                 Header = "3. Этап",
-                Caption = "Пройдите регистрацию, а затем авторизацию",
-                Image = "hello.png",
-            });Guids.Add(new UserGuide()
-            {
-                Header = "4. Этап",
-                Caption = "Пройдите регистрацию, а затем авторизацию",
-                Image = "hello.png",
+                Caption = "Выберите желаемый день бронирования, сделав двойное касание. После чего выберите время и место.",
+                Image = "bookingprev.png",
             });
+        }
+
+        private void carouselView_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
+        {
+            if(carouselView.Position == 2)
+            {
+                startBtn.IsVisible = true;
+            }
+            else
+            {
+                startBtn.IsVisible = false;
+            }
+        }
+
+        private async void startBtn_Clicked(object sender, EventArgs e)
+        {
+            Settings.LastPreviewState = "true";
+
+            var route = $"{nameof(PreviewPage)}";
+            await Shell.Current.GoToAsync(route);
+        }
+
+        protected async override void OnAppearing()
+        {
+            if (Settings.LastPreviewState == "false")
+            {
+                var route = $"{nameof(PreviewPage)}";
+                await Shell.Current.GoToAsync(route);
+            }
         }
     }
 }

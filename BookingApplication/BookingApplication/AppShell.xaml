@@ -7,6 +7,10 @@
 
     <!--маршруты, порядок запуска-->
 
+    <ShellItem Route="Page1" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate local:Page1}" />
+    </ShellItem>
+
     <ShellItem Route="PreviewPage" FlyoutItemIsVisible="False">
         <ShellContent ContentTemplate="{DataTemplate local:PreviewPage}" />
     </ShellItem>
@@ -27,7 +31,7 @@
     <!--вкладки-->
     <FlyoutItem Title="Главная" 
                 x:Name="mainFlyoutItem"
-                IsVisible="{Binding ShouldDisplayFlyoutItem_Main}">
+                >
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" 
                       Route="MainPage"/>
     </FlyoutItem>

@@ -33,18 +33,22 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Начало"/>
                                 <Label Text=" | "/>
-                                <Label Text="{Binding StartTimeZone}"/>
+                                <Label Text="{Binding StartTimeZone}"
+                                       TextColor="#3128de"/>
                             </StackLayout>
 
 
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Конец"/>
                                 <Label Text=" | "/>
-                                <Label Text="{Binding EndTimeZone}"/>
+                                <Label Text="{Binding EndTimeZone}"
+                                       TextColor="#3128de"/>
                             </StackLayout>
 
-                            <StackLayout>
-                                <Label Text="{Binding Note}"/>
+                            <StackLayout Orientation="Horizontal">
+                                        <Label Text="Комментарий | "/>
+                                        <Label Text="{Binding Note}"
+                                               TextColor="#3128de"/>
                             </StackLayout>
                         </StackLayout>
 

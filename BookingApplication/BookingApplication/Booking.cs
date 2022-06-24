@@ -22,5 +22,8 @@ namespace BookingApplication
         public string EndRegion { get; set; }
         public string Background { get; set; }
 
+        public string UserID { get; set; }
+
+
     }
 }

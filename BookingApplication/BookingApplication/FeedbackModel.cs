@@ -14,6 +14,6 @@ namespace BookingApplication
 
         public string UserID { get; set; }
 
-        public DateTime DateTime { get; set; } = DateTime.Now;
+        public string DateTime { get; set; } 
     }
 }

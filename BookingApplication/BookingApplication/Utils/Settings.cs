@@ -25,9 +25,23 @@ namespace BookingApplication.Helpers
         private const string LastUserPasswordKey = "last_password_key";
         private static readonly string SettingsDefault = string.Empty;
 
+        private const string PreviewState = "preview_state_key";
+
         #endregion
 
+        public static string LastPreviewState
+        {
+            get
+            {
 
+                return AppSettings.GetValueOrDefault(PreviewState, SettingsDefault);
+            }
+            set
+            {
+                
+                AppSettings.AddOrUpdateValue(PreviewState, value);
+            }
+        }
         public static string LastUserEmail
         {
             get

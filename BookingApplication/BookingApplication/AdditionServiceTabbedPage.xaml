@@ -6,6 +6,6 @@
             xmlns:local="clr-namespace:BookingApplication">
   <!--Pages can be added as references or inline-->
     <local:FoodPage Title="Еда"/>
-    <ContentPage Title="Напитки" />
-  <ContentPage Title="Доп. аксессуары" />
+    <local:DrinkPage Title="Напитки"/>
+    <local:Controller Title="Аксессуары"/>
 </TabbedPage>

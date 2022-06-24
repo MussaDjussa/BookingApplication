@@ -59,7 +59,8 @@ namespace BookingApplication
                         Email = UserNewEmail.Text,
                         Password = UserNewPassword.Text,
                         UserName = UserName.Text,
-                        RoleType = "client"
+                        RoleType = "client",
+                        ID = auth.User.LocalId,
                     });
                 }
             }

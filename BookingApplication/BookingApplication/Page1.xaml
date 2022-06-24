@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:bookingapplication="clr-namespace:BookingApplication"
              x:Class="BookingApplication.Page1"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        
+
         <Grid>
+
             <xct:MediaElement x:Name="vid"
                               Aspect="AspectFill"
                               AutoPlay="True"
@@ -19,63 +21,73 @@
                         <GradientStop Color="#292929" Offset="0"/>
                         <GradientStop Color="Transparent" Offset="0.3"/>
                         <GradientStop Color="#470808" Offset="0.75"/>
-                            
+
                     </LinearGradientBrush>
                 </BoxView.Background>
             </BoxView>
 
-            <StackLayout Margin="30,30,140,0" WidthRequest="120">
-                <Label Text="Руководство"
+            <StackLayout>
+
+                <StackLayout Margin="30,30,140,0" WidthRequest="120">
+                    <Label Text="Руководство"
                    TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="36"
+                    FontSize="28"
                    Padding="0"/>
-                <Label Text="пользователя"
+                    <Label Text="пользователя"
                    TextColor="White"
                    FontAttributes="Bold"
-                   FontSize="22"
+                   FontSize="28"
                    Margin="0,-8,0,0"
                    Padding="0"/>
+                </StackLayout>
 
-                <BoxView BackgroundColor="White"
-                         HeightRequest="2"
-                         WidthRequest="10"
-                         />
-            </StackLayout>
 
-            
 
-            <StackLayout VerticalOptions="CenterAndExpand"
-                         HeightRequest="300"
-                         Margin="30,0,30,0">
-                <CarouselView IndicatorView="LandingIndicator"
+                <StackLayout VerticalOptions="StartAndExpand"
+                         Margin="30,0,30,30">
+                    <CarouselView IndicatorView="LandingIndicator"
                               x:Name="carouselView"
                               ItemsSource="{Binding Guids}"
-                              VerticalOptions="End">
-                    <CarouselView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout>
-                                <Label Text="{Binding Header}" TextColor="White" FontSize="26" FontAttributes="Bold"
-                                       WidthRequest="220" HorizontalOptions="Start"/>
-                                <BoxView BackgroundColor="White"
-                         HeightRequest="1"
-                                         Opacity="0.2"
-                         WidthRequest="10"
-                         />
-                                <Label Text="{Binding Caption}" TextColor="White" FontSize="14" WidthRequest="250"
+                              CurrentItemChanged="carouselView_CurrentItemChanged">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Label Text="{Binding Header}" TextColor="White" FontSize="26" FontAttributes="Bold"
                                        HorizontalOptions="Start"/>
-                                
-                                <Image Source="{Binding Image}"
-                                       HeightRequest="200"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CarouselView.ItemTemplate>
-                </CarouselView>
-                <IndicatorView x:Name ="LandingIndicator"  IndicatorsShape="Circle" 
+                                    <BoxView BackgroundColor="White"
+                                             HeightRequest="1"
+                                             Opacity="0.2"
+                                             WidthRequest="10"/>
+                                    <Label Text="{Binding Caption}" 
+                                           Margin="0,16,0,0"
+                                           TextColor="White"
+                                           FontSize="16" 
+                                           />
+
+                                    <Frame BackgroundColor="Transparent"
+                                           Margin="2"
+                                           Padding="0">
+                                        <Image Source="{Binding Image}"
+                                               Margin="-20,0,-20,0"/>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <IndicatorView x:Name ="LandingIndicator"  IndicatorsShape="Circle" 
                                IndicatorColor="White" SelectedIndicatorColor="Red"
                                Opacity="0.8"
-                               Margin="0"/>
+                               Margin="0,0,0,40"/>
+                    <Button Text="Приступить"
+                            BackgroundColor="Transparent"
+                            BorderWidth="1"
+                            BorderColor="White"
+                            TextColor="White"
+                            x:Name="startBtn"
+                            Clicked="startBtn_Clicked"/>
 
+                </StackLayout>
             </StackLayout>
         </Grid>
 

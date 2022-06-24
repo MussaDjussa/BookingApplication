@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BookingApplication.MyFeedbackPage">
     <ContentPage.Content>
+        
         <StackLayout>
             <StackLayout>
+                <RefreshView x:Name="refreshView" Refreshing="refreshView_Refreshing">
                 <CollectionView x:Name="collection">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -46,10 +48,14 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+                </RefreshView>
                 <Button Margin="20"
                         Text="Добавить отзыв"
                         Clicked="Button_Clicked"/>
+                    
             </StackLayout>
-        </StackLayout>
+                
+            </StackLayout>
+      
     </ContentPage.Content>
 </ContentPage>

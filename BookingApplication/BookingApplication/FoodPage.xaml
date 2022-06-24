@@ -7,12 +7,36 @@
             <CollectionView x:Name="collection">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame>
-                            <StackLayout>
-                                <Image Source="{Binding Image}"/>
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="{Binding Price}"/>
-                            </StackLayout>
+                        <Frame BorderColor="LightBlue"
+                               Margin="20">
+                            <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}"
+                                       HeightRequest="80"
+                                       WidthRequest="80"/>
+                                <StackLayout Grid.Column="1"
+                                             VerticalOptions="StartAndExpand"
+                                             >
+                                    <Button CornerRadius="20"
+                                           
+                                           VerticalOptions="CenterAndExpand"
+                                           Text="{Binding Name}">
+                                        
+                                    </Button>
+
+                                    <Label Text="{Binding Price, StringFormat= Цена {0} ₽}"
+                                           Margin="20,10,0,0"
+                                           TextColor="#690909"
+                                           FontSize="18"
+                                           FontAttributes="Bold"/>
+                                </StackLayout>
+                               
+                            </Grid>
+                                
+                            
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

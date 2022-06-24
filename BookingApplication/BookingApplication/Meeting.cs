@@ -23,5 +23,10 @@ namespace BookingApplication
 
         public string RoomType { get; set; }
 
+        public string UserID { get; set; }
+
+        public string DeviceNumber { get; set; }
+
+        
     }
 }

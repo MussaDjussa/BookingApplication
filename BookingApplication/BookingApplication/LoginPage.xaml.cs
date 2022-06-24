@@ -26,39 +26,6 @@ namespace BookingApplication
             UserLoginEmail.Text = Settings.LastUserEmail;
             UserLoginPassword.Text = Settings.LastUserPassword;
             vid.Source = "ms-appx:///prikol.mp4";
-            SetUpTime();
-        }
-
-
-        public void SetUpTime()
-        {
-            //Device.StartTimer(new TimeSpan(0, 0, 1), () =>
-            //  {
-
-            //      if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 17)
-            //      {
-            //          Greeting.Text = "Добрый день";
-            //      }
-            //      if (DateTime.Now.Hour >= 17 && DateTime.Now.Hour > 12)
-            //      {
-            //          Greeting.Text = "Добрый вечер";
-            //      }
-            //      if (DateTime.Now.Hour >= 21)
-            //      {
-            //          Greeting.Text = "Доброй ночи";
-            //      }
-            //      if (DateTime.Now.Hour <= 5)
-            //      {
-            //          Greeting.Text = "Доброй ночи";
-            //      }
-
-            //      if (DateTime.Now.Hour >= 5 && DateTime.Now.Hour <= 12)
-            //      {
-            //          Greeting.Text = "Доброе утро";
-            //      }
-
-            //      return true;
-            //  });
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -76,6 +43,9 @@ namespace BookingApplication
                 var serializedcontnet = JsonConvert.SerializeObject(content);
                 Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
 
+
+                var value1 = auth.User.LocalId;
+
                 #region code
                 //await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
                 ;
@@ -91,30 +61,36 @@ namespace BookingApplication
                 App.ClientModel.Email = getRole.Object.Email;
                 App.ClientModel.RoleType = getRole.Object.RoleType;
                 App.ClientModel.UserName = getRole.Object.UserName;
+                App.ClientModel.ID = auth.User.LocalId;
                 await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
 
                 #endregion
 
-                //switch (getRole.Object.RoleType)
-                //{
-                //    case "client":
-                //        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
-                //        #region setrole
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Main = true;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = true;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = true;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = true;
-                //        break;
-                //    #endregion
-                //    case "admin":
-                //        #region setrole
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Main = false;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = false;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = false;
-                //        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = false;
-                //        break;
-                //        #endregion
-                //}
+                switch (getRole.Object.RoleType)
+                {
+                    case "client":
+                        await App.Current.MainPage.DisplayAlert("", "Авторизация прошла успешно", "ОК");
+                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                        #region setrole
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Main = true;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = true;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = true;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = true;
+                       
+                        break;
+                    #endregion
+                    case "admin":
+                        await App.Current.MainPage.DisplayAlert("", "Авторизация прошла успешно", "ОК");
+                        await Shell.Current.GoToAsync($"//{nameof(MainPage)}");
+                        #region setrole
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Main = true;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Addition = false;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_Booking = true;
+                        App.StateViewModel.ShouldDisplayFlyoutItem_FeadBack = true;
+                        break;
+                     
+                        #endregion
+                }
 
 
             }

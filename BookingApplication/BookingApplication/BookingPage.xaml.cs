@@ -23,7 +23,9 @@ namespace BookingApplication
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
             InitializeComponent();
+            Schedule.MinDisplayDate = DateTime.Now;
             Schedule.TimeZone = "Russian Standard Time";
+            
             SetUp();
 
             var collection = firebaseClient
@@ -57,6 +59,8 @@ namespace BookingApplication
                     Subject = q.Object.Subject,
                     TypeRoom = q.Object.TypeRoom,
                     Background = q.Object.Background,
+                    UserID = q.Object.UserID,
+
                 });
 
                 foreach (var item in list)
@@ -64,7 +68,6 @@ namespace BookingApplication
                     App.bookingViewModel.appointmentcollection.Add(new Meeting()
                     {
 
-                        //DeviceNumber = item.DeviceNumber,
                         EndRegion = item.EndRegion,
                         StartRegion = item.StartRegion,
                         StartTimeZone = DateTime.Parse(item.StartTimeZone),
@@ -72,7 +75,9 @@ namespace BookingApplication
                         Note = item.Note,
                         Subject = $"{item.Subject} - {item.TypeRoom}",
                         ColorZone = Color.FromHex(item.Background),
-                        //TypeRoom = item.TypeRoom,
+                        UserID = item.UserID,
+                        DeviceNumber = item.DeviceNumber,
+                        RoomType = item.TypeRoom,
                     });
                 }
 
@@ -119,13 +124,14 @@ namespace BookingApplication
                 Subject = q.Object.Subject,
                 TypeRoom = q.Object.TypeRoom,
                 Background = q.Object.Background,
+                UserID = q.Object.UserID,
+                
             });
 
             foreach (var item in list)
             {
                 App.bookingViewModel.appointmentcollection.Add(new Meeting() {
 
-                    //DeviceNumber = item.DeviceNumber,
                     EndRegion = item.EndRegion,
                     StartRegion = item.StartRegion,
                     StartTimeZone = DateTime.Parse(item.StartTimeZone),
@@ -133,7 +139,9 @@ namespace BookingApplication
                     Note = item.Note,
                     Subject = $"{item.Subject} - {item.TypeRoom}",
                     ColorZone = Color.FromHex(item.Background),
-                    //TypeRoom = item.TypeRoom,
+                    UserID = item.UserID,
+                    DeviceNumber = item.DeviceNumber,
+                    RoomType = item.TypeRoom,
                 });
             }
             
@@ -145,6 +153,7 @@ namespace BookingApplication
             catch(NullReferenceException)
             {
                 await App.Current.MainPage.DisplayAlert("Ошибка", "Что-то пошло не так...","OK");
+                refresher.IsRefreshing = false;
             }
         }
 
@@ -160,13 +169,26 @@ namespace BookingApplication
 
         private void Schedule_CellLongPressed(object sender, CellTappedEventArgs e)
         {
-            Navigation.ShowPopup(new PopupBookingList(e.Appointments));
+            
+                Navigation.ShowPopup(new PopupBookingList(MeetingTemp));
+         
+           
         }
 
-        public Meeting MeetingTemp { get; set; } = new Meeting(); 
+        public List<Meeting> MeetingTemp { get; set; } = new List<Meeting>(); 
         private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
         {
-            var value = e.Appointments;
+            if(e.Appointments != null)
+            {
+                MeetingTemp.Clear();
+                foreach (var outter in e.Appointments)
+                {
+                    
+                        MeetingTemp.Add((Meeting)outter);
+                }
+                
+            }
+            
         }
     }
 }

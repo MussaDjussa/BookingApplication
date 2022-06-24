@@ -19,20 +19,26 @@ namespace BookingApplication
     {
         FirebaseClient firebaseClient = new FirebaseClient("https://compclubdb-default-rtdb.europe-west1.firebasedatabase.app/");
         public ObservableCollection<Meeting> Meeting { get; set; } = new ObservableCollection<Meeting>();
-        public PopupBookingList(List<object> list)
+        public PopupBookingList(List<Meeting> list)
         {
-            try { 
+            try {
+                Meeting.Clear();
             InitializeComponent();
             foreach (var item in list)
             {
                 Meeting.Add((Meeting)item);
             }
 
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Meeting.Add(new Meeting() { ColorZone = Color.LightGray, EndRegion = "Russian Time Standart", StartRegion = "Russian Time Standart", EndTimeZone = DateTime.Now.AddHours(1), StartTimeZone = DateTime.Now, Note = "value", Subject = "Musa - вип" });
-            //}
-            collection.ItemsSource = Meeting;
+               if(App.ClientModel.RoleType == "admin")
+                {
+                    collection.ItemsSource = Meeting;
+                }
+               if(App.ClientModel.RoleType == "client")
+                {
+                    collection.ItemsSource = Meeting.Where(q => q.UserID == App.ClientModel.ID);
+                }
+
+               
             }
             catch(NullReferenceException)
             {
@@ -45,7 +51,9 @@ namespace BookingApplication
             try
             {
                 var value = (sender as Button).BindingContext as Meeting;
-                var getKey = (await firebaseClient.Child("Booking").OnceAsync<Booking>()).ToList().FirstOrDefault(q => Regex.IsMatch(value.Subject, q.Object.Subject));
+                var getKey = (await firebaseClient.Child("Booking").OnceAsync<MeetingFireBaseModel>()).FirstOrDefault(q => q.Object.UserID == value.UserID
+               && q.Object.StartTimeZone == value.StartTimeZone.ToString() && q.Object.EndTimeZone == value.EndTimeZone.ToString()
+               && q.Object.DeviceNumber == value.DeviceNumber && q.Object.Note == value.Note);
                 await firebaseClient.Child("Booking").Child(getKey.Key).DeleteAsync();
                 App.bookingViewModel.appointmentcollection.Remove(value);
                 Meeting.Remove(value);
@@ -66,7 +74,7 @@ namespace BookingApplication
             }
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
             var value = (sender as Button).BindingContext as Meeting;
             Navigation.ShowPopup(new PopupEditBooking(value));

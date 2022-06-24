@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Firebase.Database;
+using Firebase.Database.Query;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -13,6 +15,7 @@ namespace BookingApplication
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PopupFeedbackPage : Popup, INotifyPropertyChanged
     {
+        FirebaseClient firebaseClient = new FirebaseClient("https://compclubdb-default-rtdb.europe-west1.firebasedatabase.app/");
 
         public PopupFeedbackPage()
         {
@@ -30,14 +33,22 @@ namespace BookingApplication
         {
             FeedbackModel model = new FeedbackModel() {
 
-                DateTime = DateTime.Now,
+                DateTime = DateTime.Now.ToString(),
                 FIO = FIO.Text,
                 Description = Description.Text,
                 FixedFromAdministration = Panishment.Text,
-
             };
 
-            App.viewModel.FeedbacksMyCollection.Add(model);
+            MyFeedbackPage.feedbackCollection.Add(model);
+
+            firebaseClient.Child("Feedback").PostAsync(new FeedbackModel() { 
+            
+                DateTime = model.DateTime,
+                Description = model.Description,
+                FIO = FIO.Text,
+                FixedFromAdministration=Panishment.Text,
+                UserID = App.ClientModel.ID
+            });
 
             Dismiss(null);
         }

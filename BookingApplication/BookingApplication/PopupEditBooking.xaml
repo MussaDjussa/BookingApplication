@@ -65,10 +65,12 @@
                              HorizontalOptions="EndAndExpand">
                 <Button Text="Отменить"
                             BackgroundColor="Transparent"
-                            TextColor="Red"/>
+                            TextColor="Red"
+                        Clicked="Button_Clicked"/>
                 <Button Text="Изменить"
                         TextColor="White"
-                        BackgroundColor="#3d54fc"/>
+                        BackgroundColor="#3d54fc"
+                        Clicked="Button_Clicked_1"/>
             </StackLayout>
 
         </StackLayout>

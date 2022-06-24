@@ -94,6 +94,7 @@ namespace BookingApplication
                     StartRegion = "Russian Standard Time",
                     EndRegion = "Russian Standard Time",
                     Background = $"{meeting.ColorZone.ToHex()}",
+                    UserID = App.ClientModel.ID,                  
                 });
 
 
@@ -102,7 +103,7 @@ namespace BookingApplication
             }
             catch (NullReferenceException)
             {
-                await App.Current.MainPage.DisplayAlert("Ошибка", "Что-то пошло не так...", "ОК");
+                await App.Current.MainPage.DisplayAlert("Ошибка", "Вы не выбрали тип комнаты!", "ОК");
             }
 
 

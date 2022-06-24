@@ -22,18 +22,18 @@ namespace BookingApplication
             BindingContext = this;
             OnBoards.Add(new OnBoard()
             {
-                Heading = "Booking - just do it",
-                Caption = "now it's easy and convenient"
+                Heading = "Бронирование - это проще чем Ты думал!",
+                Caption = "почему именно Мы? Сейчас покажем и расскажем!"
+            }); 
+            OnBoards.Add(new OnBoard()
+            {
+                Heading = "Удобно!",
+                Caption = "удобнее будет только лежать на диване"
             });
             OnBoards.Add(new OnBoard()
             {
-                Heading = "Booking - just do it",
-                Caption = "now it's easy and convenient"
-            });
-            OnBoards.Add(new OnBoard()
-            {
-                Heading = "Booking - just do it",
-                Caption = "now it's easy and convenient"
+                Heading = "Работаем 24 на 7!",
+                Caption = "работаем не покладая рук!"
             });
 
             AnimatedCarousel();

@@ -19,8 +19,8 @@ namespace BookingApplication
             Pin pin = new Pin()
             {
                 Type = PinType.SearchResult,
-                Label = "Клуб приколов",
-                Address = "Kazan",
+                Label = "Gaming Club",
+                Address = "Казань, Волкова 12/60",
                 Position = new Position(55.78655751089976, 49.14419581205586),
                
 
@@ -31,7 +31,10 @@ namespace BookingApplication
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            await Shell.Current.GoToAsync($"//{nameof(PreviewPage)}");
+            App.bookingViewModel.scheduleAppointmentCollection.Clear();
+            App.bookingViewModel.appointmentcollection.Clear();
+            
         }
     }
 }

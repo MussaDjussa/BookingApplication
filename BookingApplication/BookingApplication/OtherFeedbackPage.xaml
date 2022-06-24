@@ -4,6 +4,7 @@
              x:Class="BookingApplication.OtherFeedbackPage">
     <ContentPage.Content>
         <StackLayout>
+            <RefreshView x:Name="refreshView" Refreshing="refreshView_Refreshing">
             <CollectionView x:Name="collection">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -45,7 +46,8 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
+            </RefreshView>
+        </StackLayout>
 
     </ContentPage.Content>
 </ContentPage>

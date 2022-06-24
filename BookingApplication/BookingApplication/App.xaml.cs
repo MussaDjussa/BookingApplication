@@ -3,12 +3,12 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BookingApplication.Data;
 using System.IO;
+using BookingApplication.Helpers;
 
 namespace BookingApplication
 {
     public partial class App : Application
     {
-        public static FeedbackViewModel viewModel = new FeedbackViewModel();
 
         public static BookingViewModel bookingViewModel = new BookingViewModel();
 
@@ -16,7 +16,6 @@ namespace BookingApplication
 
         public static PageStateViewModel StateViewModel = new PageStateViewModel();
         public static ClientModel ClientModel = new ClientModel();
-
         public static UserDB UserDB
         {
             get
@@ -32,11 +31,12 @@ namespace BookingApplication
         public static AppShell appShell = new AppShell();
         public App()
         {
-            MainPage = new MainPage();
+            MainPage = appShell;
         }
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
